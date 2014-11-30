@@ -22,10 +22,16 @@
 @property (weak, nonatomic) IBOutlet TMCircleLayout *collectionViewLayout;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
 
+@property (strong, nonatomic) NSTimer *timer;
+
+@property (assign, nonatomic) NSUInteger currentStep;
 @property (assign, nonatomic) CGFloat currentTemperature;
 
 - (void)updateDate;
 - (void)updateTemperature;
+
+- (void)startTimer;
+- (void)stopTimer;
 
 @end
 
@@ -49,7 +55,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self updateDate];
-    [self updateTemperature];
+//    [self updateTemperature];
 
     _segmentedControl = [[SVSegmentedControl alloc] initWithSectionTitles:@[@"°F", @"°C"]];
     _segmentedControl.frame = CGRectMake(184, 21, 134, 28);
@@ -70,7 +76,8 @@
         DLog(@"%u", newIndex);
         [TMUtils setCurrentMetric:newIndex];
         DLog(@"%u", [TMUtils currentMetric]);
-        [weakSelf updateTemperature];
+        
+        [weakSelf startTimer];
     };
     
     [_segmentedControl setSelectedSegmentIndex:[TMUtils currentMetric] animated:NO];
@@ -104,6 +111,29 @@
     self.currentTemperature = 36.65f;
     
     self.temperatureLabel.text = [TMUtils temperatureFromNumber:@(self.currentTemperature)];
+    [self.collectionView reloadData];
+    
+    self.currentStep++;
+
+    if (self.currentStep == TMMaxCellsPerCircle) {
+        [self stopTimer];
+    }
+}
+
+- (void)startTimer {
+    DLog();
+    [self stopTimer];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateTemperature) userInfo:nil repeats:YES];
+}
+
+- (void)stopTimer {
+    DLog();
+    
+    [self.timer invalidate];
+
+    self.currentStep = 0;
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -116,9 +146,9 @@
     TMCircleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TMCircleCellIdentifier forIndexPath:indexPath];
     
     NSString *imageName = @"point_green";
-    if (indexPath.item < 12) {
+    if (indexPath.item < self.currentStep) {
         imageName = @"point_red";
-    } else if (indexPath.item == 12) {
+    } else if (indexPath.item && indexPath.item == self.currentStep) {
         imageName = @"point_red_active";
     }
     

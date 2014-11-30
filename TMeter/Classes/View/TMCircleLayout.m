@@ -29,7 +29,6 @@
     _cellCount = [[self collectionView] numberOfItemsInSection:0];
     _center = CGPointMake(size.width / 2.0, size.height / 2.0);
     _radius = MIN(_radius, MIN(size.width, size.height) - MAX(_itemSize.width, _itemSize.height) - 20.f);
-    DLog(@"radius: %f", _radius);
     _distance = MAX(_distance, TMMaxDistance);
     _cellsPerCircle = MAX(TMMaxCellsPerCircle, _cellsPerCircle);
 }
