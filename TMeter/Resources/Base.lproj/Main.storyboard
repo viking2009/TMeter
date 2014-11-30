@@ -17,19 +17,89 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hm1-Av-p86">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hm1-Av-p86">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="vPJ-9O-BF5"/>
+                                </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bottom_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="hjV-9z-JOU">
+                                <rect key="frame" x="0.0" y="509" width="320" height="59"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_girl.png" translatesAutoresizingMaskIntoConstraints="NO" id="rBN-4p-nea">
+                                <rect key="frame" x="190" y="416" width="110" height="152"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_top_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="0ee-iZ-bHh">
+                                <rect key="frame" x="0.0" y="20" width="320" height="39"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_flag.png" translatesAutoresizingMaskIntoConstraints="NO" id="DGb-tK-4g3">
+                                <rect key="frame" x="6" y="20" width="48" height="55"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znW-5V-WAK">
+                                <rect key="frame" x="6" y="18" width="48" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZL-qi-Ob8">
+                                <rect key="frame" x="6" y="44" width="48" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ztn-iY-2tZ">
+                                <rect key="frame" x="46" y="536" width="78" height="27"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="About" backgroundImage="main_about_button_default.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="main_about_button_highlighted.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.73725490196078436" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="znW-5V-WAK" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="18" id="AOA-fF-Q3O"/>
+                            <constraint firstAttribute="width" secondItem="0ee-iZ-bHh" secondAttribute="width" id="Avu-BW-8vF"/>
+                            <constraint firstAttribute="bottom" secondItem="Ztn-iY-2tZ" secondAttribute="bottom" constant="5" id="CTL-8m-UsO"/>
+                            <constraint firstItem="vZL-qi-Ob8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="6" id="Dlt-Qz-0xz"/>
+                            <constraint firstItem="0ee-iZ-bHh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" id="Fql-Vv-VBE"/>
+                            <constraint firstItem="hjV-9z-JOU" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="Oea-E8-dgb"/>
+                            <constraint firstItem="DGb-tK-4g3" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="20" id="SxO-mq-lds"/>
+                            <constraint firstItem="0ee-iZ-bHh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="VN9-lV-mgV"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="hjV-9z-JOU" secondAttribute="bottom" id="VjQ-8o-ZSw"/>
+                            <constraint firstAttribute="bottom" secondItem="rBN-4p-nea" secondAttribute="bottom" id="Zwv-Y7-a4n"/>
+                            <constraint firstItem="znW-5V-WAK" firstAttribute="width" secondItem="DGb-tK-4g3" secondAttribute="width" id="dLn-QC-9zg"/>
+                            <constraint firstItem="hjV-9z-JOU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="dZ4-FX-Syg"/>
+                            <constraint firstItem="hm1-Av-p86" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="dqh-m7-BWC"/>
+                            <constraint firstItem="znW-5V-WAK" firstAttribute="width" secondItem="vZL-qi-Ob8" secondAttribute="width" id="hMI-TA-Nns"/>
+                            <constraint firstItem="vZL-qi-Ob8" firstAttribute="top" secondItem="znW-5V-WAK" secondAttribute="bottom" constant="-4" id="oVp-rX-ZrS"/>
+                            <constraint firstAttribute="width" secondItem="hm1-Av-p86" secondAttribute="width" id="qvp-EB-38d"/>
+                            <constraint firstItem="hm1-Av-p86" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="rOz-SH-Nk2"/>
+                            <constraint firstAttribute="trailing" secondItem="rBN-4p-nea" secondAttribute="trailing" constant="20" id="rpq-et-8Mf"/>
+                            <constraint firstItem="Ztn-iY-2tZ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="46" id="sTz-CE-UUZ"/>
+                            <constraint firstItem="DGb-tK-4g3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="6" id="sh4-pz-kPg"/>
+                            <constraint firstItem="znW-5V-WAK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="6" id="tIG-0s-2mk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dayLabel" destination="znW-5V-WAK" id="9Ag-5S-lO7"/>
+                        <outlet property="monthLabel" destination="vZL-qi-Ob8" id="rw3-Vc-ZfR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131" y="281"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="main_about_button_default.png" width="78" height="27"/>
+        <image name="main_about_button_highlighted.png" width="78" height="27"/>
+        <image name="main_bottom_background.png" width="320" height="59"/>
+        <image name="main_flag.png" width="48" height="55"/>
+        <image name="main_girl.png" width="110" height="152"/>
+        <image name="main_top_background.png" width="320" height="39"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
