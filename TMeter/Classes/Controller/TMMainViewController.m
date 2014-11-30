@@ -48,6 +48,9 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (void)viewDidLoad {
@@ -108,6 +111,7 @@
 }
 
 - (void)updateTemperature {
+    // TODO: calculate temperature
     self.currentTemperature = 36.65f;
     
     self.temperatureLabel.text = [TMUtils temperatureFromNumber:@(self.currentTemperature)];
@@ -121,17 +125,15 @@
 }
 
 - (void)startTimer {
-    DLog();
     [self stopTimer];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateTemperature) userInfo:nil repeats:YES];
 }
 
 - (void)stopTimer {
-    DLog();
-    
     [self.timer invalidate];
-
+    self.timer = nil;
+    
     self.currentStep = 0;
     [self.collectionView reloadData];
 }
