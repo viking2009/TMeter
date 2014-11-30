@@ -9,15 +9,23 @@
 #import "TMMainViewController.h"
 #import "SVSegmentedControl.h"
 #import "Macros.h"
-#import "MTUtils.h"
+#import "TMUtils.h"
+#import "TMCircleLayout.h"
+#import "TMCircleCell.h"
 
-@interface TMMainViewController ()
+@interface TMMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 @property (strong, nonatomic) SVSegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet TMCircleLayout *collectionViewLayout;
+@property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
+
+@property (assign, nonatomic) CGFloat currentTemperature;
 
 - (void)updateDate;
+- (void)updateTemperature;
 
 @end
 
@@ -41,6 +49,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     [self updateDate];
+    [self updateTemperature];
 
     _segmentedControl = [[SVSegmentedControl alloc] initWithSectionTitles:@[@"°F", @"°C"]];
     _segmentedControl.frame = CGRectMake(184, 21, 134, 28);
@@ -55,16 +64,22 @@
     _segmentedControl.thumb.highlightedBackgroundImage = [[UIImage imageNamed:@"segmented_control_thumb_background"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15.f, 0, 15.f) resizingMode:UIImageResizingModeStretch];
     _segmentedControl.thumb.textShadowColor = RGBA(255, 255, 255, 0.75);
     _segmentedControl.thumb.textShadowOffset = CGSizeMake(0, 1);
+    
+    __weak typeof(self) weakSelf = self;
     _segmentedControl.changeHandler = ^(NSUInteger newIndex) {
         DLog(@"%u", newIndex);
-        [MTUtils setCurrentMetric:newIndex];
-        DLog(@"%u", [MTUtils currentMetric]);
+        [TMUtils setCurrentMetric:newIndex];
+        DLog(@"%u", [TMUtils currentMetric]);
+        [weakSelf updateTemperature];
     };
     
-    [_segmentedControl setSelectedSegmentIndex:[MTUtils currentMetric] animated:NO];
-
+    [_segmentedControl setSelectedSegmentIndex:[TMUtils currentMetric] animated:NO];
     [self.view addSubview:_segmentedControl];
     
+    self.collectionViewLayout.radius = 80.f;
+    self.collectionViewLayout.cellsPerCircle = 30;
+    self.collectionViewLayout.itemSize = CGSizeMake(TMCircleCellImageSize, TMCircleCellImageSize);
+    self.collectionViewLayout.distance = 18.f;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,8 +96,45 @@
 - (void)updateDate {
     NSDate *now = [NSDate date];
     
-    self.dayLabel.text = [MTUtils dayStringFromDate:now];
-    self.monthLabel.text = [MTUtils monthStringFromDate:now];
+    self.dayLabel.text = [TMUtils dayStringFromDate:now];
+    self.monthLabel.text = [TMUtils monthStringFromDate:now];
+}
+
+- (void)updateTemperature {
+    self.currentTemperature = 36.65f;
+    
+    self.temperatureLabel.text = [TMUtils temperatureFromNumber:@(self.currentTemperature)];
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return TMMaxCellsPerCircle;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    TMCircleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TMCircleCellIdentifier forIndexPath:indexPath];
+    
+    NSString *imageName = @"point_green";
+    if (indexPath.item < 12) {
+        imageName = @"point_red";
+    } else if (indexPath.item == 12) {
+        imageName = @"point_red_active";
+    }
+    
+    cell.imageView.image = [UIImage imageNamed:imageName];
+    
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
 }
 
 @end

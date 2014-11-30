@@ -1,5 +1,5 @@
 //
-//  MTUtils.h
+//  TMUtils.h
 //  TMeter
 //
 //  Created by Mykola Vyshynskyi on 13.11.14.
@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, MTMetric) {
-    MTMetricFahrenheit,
-    MTMetricCelsius
+typedef NS_ENUM(NSUInteger, TMMetric) {
+    TMMetricFahrenheit,
+    TMMetricCelsius
 };
 
-@interface MTUtils : NSObject
+@interface TMUtils : NSObject
 
-+ (MTMetric)currentMetric;
-+ (void)setCurrentMetric:(MTMetric)metric;
++ (TMMetric)currentMetric;
++ (void)setCurrentMetric:(TMMetric)metric;
 
 + (NSString *)dayStringFromDate:(NSDate *)date;
 + (NSString *)monthStringFromDate:(NSDate *)date;

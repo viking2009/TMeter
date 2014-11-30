@@ -28,7 +28,12 @@
 		900AEEA01A2B706100848B57 /* main_top_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEE991A2B706100848B57 /* main_top_background@2x.png */; };
 		900AEEA31A2B757300848B57 /* segmented_control_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEEA11A2B757300848B57 /* segmented_control_background@2x.png */; };
 		900AEEA41A2B757300848B57 /* segmented_control_thumb_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEEA21A2B757300848B57 /* segmented_control_thumb_background@2x.png */; };
-		900AEEA71A2B7C1100848B57 /* MTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 900AEEA61A2B7C1100848B57 /* MTUtils.m */; };
+		900AEEA71A2B7C1100848B57 /* TMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 900AEEA61A2B7C1100848B57 /* TMUtils.m */; };
+		900AEEAA1A2B8B0700848B57 /* TMCircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 900AEEA91A2B8B0700848B57 /* TMCircleLayout.m */; };
+		900AEEAD1A2B8E6F00848B57 /* TMCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900AEEAC1A2B8E6F00848B57 /* TMCircleCell.m */; };
+		900AEEB51A2B904600848B57 /* point_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEEAF1A2B904600848B57 /* point_green@2x.png */; };
+		900AEEB71A2B904600848B57 /* point_red_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEEB11A2B904600848B57 /* point_red_active@2x.png */; };
+		900AEEB91A2B904600848B57 /* point_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEEB31A2B904600848B57 /* point_red@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +77,15 @@
 		900AEE991A2B706100848B57 /* main_top_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_top_background@2x.png"; sourceTree = "<group>"; };
 		900AEEA11A2B757300848B57 /* segmented_control_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmented_control_background@2x.png"; sourceTree = "<group>"; };
 		900AEEA21A2B757300848B57 /* segmented_control_thumb_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmented_control_thumb_background@2x.png"; sourceTree = "<group>"; };
-		900AEEA51A2B7C1100848B57 /* MTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUtils.h; sourceTree = "<group>"; };
-		900AEEA61A2B7C1100848B57 /* MTUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUtils.m; sourceTree = "<group>"; };
+		900AEEA51A2B7C1100848B57 /* TMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMUtils.h; sourceTree = "<group>"; };
+		900AEEA61A2B7C1100848B57 /* TMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMUtils.m; sourceTree = "<group>"; };
+		900AEEA81A2B8B0700848B57 /* TMCircleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCircleLayout.h; sourceTree = "<group>"; };
+		900AEEA91A2B8B0700848B57 /* TMCircleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCircleLayout.m; sourceTree = "<group>"; };
+		900AEEAB1A2B8E6F00848B57 /* TMCircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMCircleCell.h; sourceTree = "<group>"; };
+		900AEEAC1A2B8E6F00848B57 /* TMCircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMCircleCell.m; sourceTree = "<group>"; };
+		900AEEAF1A2B904600848B57 /* point_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point_green@2x.png"; sourceTree = "<group>"; };
+		900AEEB11A2B904600848B57 /* point_red_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point_red_active@2x.png"; sourceTree = "<group>"; };
+		900AEEB31A2B904600848B57 /* point_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point_red@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,8 +202,8 @@
 		900AEE6D1A2B638200848B57 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				900AEEA51A2B7C1100848B57 /* MTUtils.h */,
-				900AEEA61A2B7C1100848B57 /* MTUtils.m */,
+				900AEEA51A2B7C1100848B57 /* TMUtils.h */,
+				900AEEA61A2B7C1100848B57 /* TMUtils.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +211,10 @@
 		900AEE6E1A2B638200848B57 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				900AEEA81A2B8B0700848B57 /* TMCircleLayout.h */,
+				900AEEA91A2B8B0700848B57 /* TMCircleLayout.m */,
+				900AEEAB1A2B8E6F00848B57 /* TMCircleCell.h */,
+				900AEEAC1A2B8E6F00848B57 /* TMCircleCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,6 +280,9 @@
 				900AEE991A2B706100848B57 /* main_top_background@2x.png */,
 				900AEEA11A2B757300848B57 /* segmented_control_background@2x.png */,
 				900AEEA21A2B757300848B57 /* segmented_control_thumb_background@2x.png */,
+				900AEEAF1A2B904600848B57 /* point_green@2x.png */,
+				900AEEB11A2B904600848B57 /* point_red_active@2x.png */,
+				900AEEB31A2B904600848B57 /* point_red@2x.png */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -350,15 +369,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				900AEEA41A2B757300848B57 /* segmented_control_thumb_background@2x.png in Resources */,
+				900AEEB51A2B904600848B57 /* point_green@2x.png in Resources */,
 				900AEE9A1A2B706100848B57 /* main_about_button_highlighted@2x.png in Resources */,
 				900AEE891A2B63BF00848B57 /* iTunesArtwork@2x in Resources */,
 				900AEE831A2B63BF00848B57 /* Default@2x.png in Resources */,
+				900AEEB71A2B904600848B57 /* point_red_active@2x.png in Resources */,
 				900AEE871A2B63BF00848B57 /* Icon@2x.png in Resources */,
 				900AEE881A2B63BF00848B57 /* iTunesArtwork in Resources */,
 				900AEE741A2B638C00848B57 /* Main.storyboard in Resources */,
 				900AEEA01A2B706100848B57 /* main_top_background@2x.png in Resources */,
 				900AEE9E1A2B706100848B57 /* main_flag@2x.png in Resources */,
 				900AEE9C1A2B706100848B57 /* main_bottom_background@2x.png in Resources */,
+				900AEEB91A2B904600848B57 /* point_red@2x.png in Resources */,
 				900AEEA31A2B757300848B57 /* segmented_control_background@2x.png in Resources */,
 				900AEE9B1A2B706100848B57 /* main_about_button_default@2x.png in Resources */,
 				900AEE811A2B63BF00848B57 /* Default-568h@2x.png in Resources */,
@@ -382,9 +404,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				900AEE911A2B6DC500848B57 /* SVSegmentedThumb.m in Sources */,
-				900AEEA71A2B7C1100848B57 /* MTUtils.m in Sources */,
+				900AEEA71A2B7C1100848B57 /* TMUtils.m in Sources */,
+				900AEEAA1A2B8B0700848B57 /* TMCircleLayout.m in Sources */,
 				900AEE701A2B638200848B57 /* TMMainViewController.m in Sources */,
 				900AEE901A2B6DC500848B57 /* SVSegmentedControl.m in Sources */,
+				900AEEAD1A2B8E6F00848B57 /* TMCircleCell.m in Sources */,
 				900AEE421A2B5E7C00848B57 /* main.m in Sources */,
 				900AEE6F1A2B638200848B57 /* TMAppDelegate.m in Sources */,
 			);

@@ -1,12 +1,12 @@
 //
-//  MTUtils.m
+//  TMUtils.m
 //  TMeter
 //
 //  Created by Mykola Vyshynskyi on 30.11.14.
 //  Copyright (c) 2014 Mykola Vyshynskyi. All rights reserved.
 //
 
-#import "MTUtils.h"
+#import "TMUtils.h"
 
 #import <sys/types.h>
 #import <sys/sysctl.h>
@@ -19,13 +19,19 @@
 static NSDateFormatter *_dateFormatter = nil;
 static NSNumberFormatter *_numberFormatter = nil;
 
-@implementation MTUtils
+@implementation TMUtils
 
-+ (MTMetric)currentMetric {
-    return [[[NSUserDefaults standardUserDefaults] objectForKey:MTCurrentMetricKey] unsignedIntegerValue];
++ (TMMetric)currentMetric {
+    NSNumber *currentMetric = [[NSUserDefaults standardUserDefaults] objectForKey:MTCurrentMetricKey];
+    if (!currentMetric) {
+        currentMetric = @(TMMetricCelsius);
+        [self setCurrentMetric:TMMetricCelsius];
+    }
+    
+    return [currentMetric unsignedIntegerValue];
 }
 
-+ (void)setCurrentMetric:(MTMetric)metric {
++ (void)setCurrentMetric:(TMMetric)metric {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     [defaults setObject:@(metric) forKey:MTCurrentMetricKey];
@@ -59,7 +65,7 @@ static NSNumberFormatter *_numberFormatter = nil;
     NSNumberFormatter *numberFormatter = [self numberFormatter];
     [numberFormatter setMinimumFractionDigits:2];
     [numberFormatter setMaximumFractionDigits:2];
-    if ([self currentMetric] == MTMetricFahrenheit) {
+    if ([self currentMetric] == TMMetricFahrenheit) {
         number = @([self celsiusToFahrenheit:[number floatValue]]);
         [numberFormatter setPositiveSuffix:@"°F"];
     } else
@@ -75,7 +81,7 @@ static NSNumberFormatter *_numberFormatter = nil;
     NSNumberFormatter *numberFormatter = [self numberFormatter];
     [numberFormatter setMinimumFractionDigits:0];
     [numberFormatter setMaximumFractionDigits:0];
-    if ([self currentMetric] == MTMetricFahrenheit) {
+    if ([self currentMetric] == TMMetricFahrenheit) {
         number = @([self celsiusToFahrenheit:[number floatValue]]);
         [numberFormatter setPositiveSuffix:@" °F"];
     } else
@@ -89,14 +95,14 @@ static NSNumberFormatter *_numberFormatter = nil;
         return nil;
     
     NSNumberFormatter *numberFormatter = [self numberFormatter];
-    if ([self currentMetric] == MTMetricFahrenheit)
+    if ([self currentMetric] == TMMetricFahrenheit)
         [numberFormatter setPositiveSuffix:@"°F"];
     else
         [numberFormatter setPositiveSuffix:@"°C"];
     
     NSNumber *temperature = [numberFormatter numberFromString:string];
     
-    if ([self currentMetric] == MTMetricFahrenheit)
+    if ([self currentMetric] == TMMetricFahrenheit)
         temperature = @([self fahrenheitToCelsius:[temperature floatValue]]);
 
     return temperature;
