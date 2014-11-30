@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  TMAppDelegate.m
 //  TMeter
 //
 //  Created by Mykola Vyshynskyi on 30.11.14.
 //  Copyright (c) 2014 Mykola Vyshynskyi. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "TMAppDelegate.h"
 
-@interface AppDelegate ()
+@interface TMAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation TMAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  TMAppDelegate.h
 //  TMeter
 //
 //  Created by Mykola Vyshynskyi on 30.11.14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface TMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

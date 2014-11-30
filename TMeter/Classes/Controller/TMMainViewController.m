@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  TMMainViewController.m
 //  TMeter
 //
 //  Created by Mykola Vyshynskyi on 30.11.14.
 //  Copyright (c) 2014 Mykola Vyshynskyi. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "TMMainViewController.h"
 
-@interface ViewController ()
+@interface TMMainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation TMMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
