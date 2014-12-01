@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *iconViews;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet TMCircleLayout *collectionViewLayout;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleView;
 @property (weak, nonatomic) IBOutlet UILabel *hintLabel;
@@ -37,6 +38,8 @@
 
 - (void)startTimer;
 - (void)stopTimer;
+
+- (IBAction)startButtonAction:(id)sender;
 
 @end
 
@@ -81,11 +84,8 @@
     
     __weak typeof(self) weakSelf = self;
     _segmentedControl.changeHandler = ^(NSUInteger newIndex) {
-        DLog(@"%u", newIndex);
         [TMUtils setCurrentMetric:newIndex];
-        DLog(@"%u", [TMUtils currentMetric]);
-        
-        [weakSelf startTimer];
+        weakSelf.temperatureLabel.text = [TMUtils temperatureFromNumber:@(weakSelf.currentTemperature)];
     };
     
     [_segmentedControl setSelectedSegmentIndex:[TMUtils currentMetric] animated:NO];
@@ -140,16 +140,32 @@
         iconView.alpha = 0.5;
     }
 
+    NSString *tempString = @"normal";
     // TODO: update label
     if (self.currentTemperature < 36.5f) {
         [_iconViews[0] setAlpha:1.0];
+        tempString = @"low";
     } else if (self.currentTemperature < 36.99f) {
         [_iconViews[1] setAlpha:1.0];
     } else if (self.currentTemperature < 38.99f) {
         [_iconViews[2] setAlpha:1.0];
+        tempString = @"high";
     } else {
         [_iconViews[3] setAlpha:1.0];
+        tempString = @"very high";
     }
+    
+    NSString *hintString = [NSString stringWithFormat:@"You have %@ temperature!", tempString];
+    UIFont *hintFont = [UIFont fontWithName:@"HelveticaNeue" size:15];
+    
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: RGB(0, 0, 0), NSFontAttributeName: hintFont};
+    NSMutableAttributedString *hintAttributedText = [[NSMutableAttributedString alloc] initWithString:hintString attributes:attributes];
+    
+    NSRange range = [hintString rangeOfString:tempString];
+    attributes = @{NSForegroundColorAttributeName: RGB(235, 45, 1), NSFontAttributeName: hintFont};
+    [hintAttributedText setAttributes:attributes range:range];
+
+    self.hintLabel.attributedText = hintAttributedText;
 }
 
 - (void)hideResults {
@@ -165,6 +181,9 @@
     [self stopTimer];
     [self hideResults];
     
+    self.startButton.hidden = YES;
+    self.temperatureLabel.hidden = NO;
+    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateTemperature) userInfo:nil repeats:YES];
 }
 
@@ -174,6 +193,10 @@
     
     self.currentStep = 0;
     [self.collectionView reloadData];
+}
+
+- (IBAction)startButtonAction:(id)sender {
+    [self startTimer];
 }
 
 #pragma mark - UICollectionViewDataSource

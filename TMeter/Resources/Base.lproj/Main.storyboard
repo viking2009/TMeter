@@ -31,10 +31,10 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bubble_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="B6u-of-Ba4">
                                 <rect key="frame" x="56" y="421" width="150" height="102"/>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BfJ-r5-XBe">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BfJ-r5-XBe">
                                 <rect key="frame" x="0.0" y="83" width="320" height="330"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeY-hf-fZK">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeY-hf-fZK">
                                         <rect key="frame" x="0.0" y="35" width="320" height="260"/>
                                         <subviews>
                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xbr-4l-OHl">
@@ -103,7 +103,7 @@
                                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="SvI-gl-bFq"/>
                                                 </connections>
                                             </collectionView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFg-CG-PiY">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFg-CG-PiY">
                                                 <rect key="frame" x="80" y="80" width="160" height="180"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="180" id="SCd-GU-stJ"/>
@@ -113,6 +113,15 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd0-QN-2Lx">
+                                                <rect key="frame" x="119" y="129" width="82" height="82"/>
+                                                <state key="normal" backgroundImage="main_start_button.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="startButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Fh2-m4-6Vn"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -124,7 +133,9 @@
                                             <constraint firstItem="kgX-vY-s7O" firstAttribute="leading" secondItem="QfJ-5r-Wig" secondAttribute="trailing" constant="10" id="9rh-jA-WKZ"/>
                                             <constraint firstItem="Xbr-4l-OHl" firstAttribute="leading" secondItem="qeY-hf-fZK" secondAttribute="leading" constant="15" id="BJf-Le-V2p"/>
                                             <constraint firstItem="QfJ-5r-Wig" firstAttribute="top" secondItem="qeY-hf-fZK" secondAttribute="top" constant="5" id="KwD-qV-I4K"/>
+                                            <constraint firstItem="zd0-QN-2Lx" firstAttribute="centerY" secondItem="Rgl-t0-fOU" secondAttribute="centerY" id="PYg-sD-JJY"/>
                                             <constraint firstItem="kgX-vY-s7O" firstAttribute="top" secondItem="qeY-hf-fZK" secondAttribute="top" constant="5" id="WkS-0T-dBV"/>
+                                            <constraint firstItem="zd0-QN-2Lx" firstAttribute="centerX" secondItem="Rgl-t0-fOU" secondAttribute="centerX" id="Yi8-Vl-Uzx"/>
                                             <constraint firstItem="F3k-4N-aJq" firstAttribute="leading" secondItem="Xbr-4l-OHl" secondAttribute="trailing" constant="10" id="dUP-Mh-wHB"/>
                                             <constraint firstAttribute="centerX" secondItem="Rgl-t0-fOU" secondAttribute="centerX" id="grK-Fl-B9a"/>
                                             <constraint firstItem="Rgl-t0-fOU" firstAttribute="top" secondItem="qeY-hf-fZK" secondAttribute="top" constant="70" id="jJ2-1B-bq1"/>
@@ -230,6 +241,7 @@
                             <constraint firstItem="DGb-tK-4g3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="6" id="sh4-pz-kPg"/>
                             <constraint firstItem="suL-jG-Wux" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="70" id="soJ-LE-MmQ"/>
                             <constraint firstItem="znW-5V-WAK" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="6" id="tIG-0s-2mk"/>
+                            <constraint firstAttribute="width" secondItem="BfJ-r5-XBe" secondAttribute="width" id="yUn-1L-2iR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -239,6 +251,7 @@
                         <outlet property="dayLabel" destination="znW-5V-WAK" id="9Ag-5S-lO7"/>
                         <outlet property="hintLabel" destination="suL-jG-Wux" id="DIL-EO-DHl"/>
                         <outlet property="monthLabel" destination="vZL-qi-Ob8" id="rw3-Vc-ZfR"/>
+                        <outlet property="startButton" destination="zd0-QN-2Lx" id="L1W-PT-mKm"/>
                         <outlet property="temperatureLabel" destination="gFg-CG-PiY" id="RrV-HL-vMZ"/>
                         <outletCollection property="iconViews" destination="Xbr-4l-OHl" id="d6k-XO-IpR"/>
                         <outletCollection property="iconViews" destination="F3k-4N-aJq" id="T7U-Sz-2Iz"/>
@@ -262,6 +275,7 @@
         <image name="main_bubble_background.png" width="150" height="102"/>
         <image name="main_flag.png" width="48" height="55"/>
         <image name="main_girl.png" width="110" height="152"/>
+        <image name="main_start_button.png" width="82" height="82"/>
         <image name="main_top_background.png" width="320" height="39"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
