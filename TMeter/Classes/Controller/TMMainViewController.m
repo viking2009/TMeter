@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 @property (strong, nonatomic) SVSegmentedControl *segmentedControl;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *iconViews;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet TMCircleLayout *collectionViewLayout;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
@@ -133,15 +134,36 @@
     // TODO: change hintLabel text, hightlight icon
     self.bubbleView.hidden = NO;
     self.hintLabel.hidden = NO;
+    
+    for (UIImageView *iconView in self.iconViews) {
+        iconView.hidden = NO;
+        iconView.alpha = 0.5;
+    }
+
+    // TODO: update label
+    if (self.currentTemperature < 36.5f) {
+        [_iconViews[0] setAlpha:1.0];
+    } else if (self.currentTemperature < 36.99f) {
+        [_iconViews[1] setAlpha:1.0];
+    } else if (self.currentTemperature < 38.99f) {
+        [_iconViews[2] setAlpha:1.0];
+    } else {
+        [_iconViews[3] setAlpha:1.0];
+    }
 }
 
 - (void)hideResults {
     self.bubbleView.hidden = YES;
     self.hintLabel.hidden = YES;
+    
+    for (UIImageView *iconView in self.iconViews) {
+        iconView.hidden = YES;
+    }
 }
 
 - (void)startTimer {
     [self stopTimer];
+    [self hideResults];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateTemperature) userInfo:nil repeats:YES];
 }
