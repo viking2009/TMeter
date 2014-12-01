@@ -28,7 +28,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bottom_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="hjV-9z-JOU">
                                 <rect key="frame" x="0.0" y="509" width="320" height="59"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bubble_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="B6u-of-Ba4">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_bubble_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="B6u-of-Ba4">
                                 <rect key="frame" x="56" y="421" width="150" height="102"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_girl.png" translatesAutoresizingMaskIntoConstraints="NO" id="rBN-4p-nea">
@@ -60,7 +60,7 @@
                                 </state>
                                 <state key="highlighted" backgroundImage="main_about_button_highlighted.png"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suL-jG-Wux">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suL-jG-Wux">
                                 <rect key="frame" x="70" y="430" width="122" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="MDf-OV-hki"/>
@@ -174,9 +174,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bubbleView" destination="B6u-of-Ba4" id="CM7-vf-EMF"/>
                         <outlet property="collectionView" destination="Rgl-t0-fOU" id="erO-8h-vzg"/>
                         <outlet property="collectionViewLayout" destination="iOn-2n-Nci" id="UTD-sa-JM8"/>
                         <outlet property="dayLabel" destination="znW-5V-WAK" id="9Ag-5S-lO7"/>
+                        <outlet property="hintLabel" destination="suL-jG-Wux" id="DIL-EO-DHl"/>
                         <outlet property="monthLabel" destination="vZL-qi-Ob8" id="rw3-Vc-ZfR"/>
                         <outlet property="temperatureLabel" destination="gFg-CG-PiY" id="RrV-HL-vMZ"/>
                     </connections>

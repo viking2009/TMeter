@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet TMCircleLayout *collectionViewLayout;
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *bubbleView;
+@property (weak, nonatomic) IBOutlet UILabel *hintLabel;
 
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -29,6 +31,8 @@
 
 - (void)updateDate;
 - (void)updateTemperature;
+- (void)showResults;
+- (void)hideResults;
 
 - (void)startTimer;
 - (void)stopTimer;
@@ -121,7 +125,19 @@
 
     if (self.currentStep == TMMaxCellsPerCircle) {
         [self stopTimer];
+        [self showResults];
     }
+}
+
+- (void)showResults {
+    // TODO: change hintLabel text, hightlight icon
+    self.bubbleView.hidden = NO;
+    self.hintLabel.hidden = NO;
+}
+
+- (void)hideResults {
+    self.bubbleView.hidden = YES;
+    self.hintLabel.hidden = YES;
 }
 
 - (void)startTimer {
