@@ -18,6 +18,8 @@ typedef NS_ENUM(NSUInteger, TMMetric) {
 + (TMMetric)currentMetric;
 + (void)setCurrentMetric:(TMMetric)metric;
 
++ (NSArray *)supportedMetrics;
+
 + (NSString *)dayStringFromDate:(NSDate *)date;
 + (NSString *)monthStringFromDate:(NSDate *)date;
 

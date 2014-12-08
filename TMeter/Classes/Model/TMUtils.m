@@ -7,6 +7,7 @@
 //
 
 #import "TMUtils.h"
+#import "Macros.h"
 
 #import <sys/types.h>
 #import <sys/sysctl.h>
@@ -36,6 +37,10 @@ static NSNumberFormatter *_numberFormatter = nil;
     
     [defaults setObject:@(metric) forKey:MTCurrentMetricKey];
     [defaults synchronize];
+}
+
++ (NSArray *)supportedMetrics {
+    return @[TMLocalizedString(@"U.S."), TMLocalizedString(@"Metric")];
 }
 
 + (NSString *)dayStringFromDate:(NSDate *)date {
