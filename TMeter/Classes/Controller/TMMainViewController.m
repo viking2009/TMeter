@@ -16,6 +16,9 @@
 #define kOLSParameterA -1.99550610142
 #define kOLSParameterB 16351.0179948
 
+#define kTMeterMinTemperature 32.f
+#define kTMeterMaxTemperature 42.f
+
 @interface TMMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, RIOInterfaceDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *iconViews;
@@ -101,7 +104,12 @@
 }
 
 - (void)updateTemperatureLabel {
-    self.temperatureLabel.text = [TMUtils temperatureFromNumber:@(self.currentTemperature)];
+    if (self.currentTemperature >= kTMeterMinTemperature && self.currentTemperature <= kTMeterMaxTemperature) {
+        self.temperatureLabel.text = [TMUtils temperatureFromNumber:@(self.currentTemperature)];
+    } else {
+        NSString *suffix = ([TMUtils currentMetric] == TMMetricFahrenheit ? @"°F" : @"°C");
+        self.temperatureLabel.text = [NSString stringWithFormat:@"--%@--%@", [[TMUtils numberFormatter] decimalSeparator], suffix];
+    }
 }
 
 - (void)showResults {
