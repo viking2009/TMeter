@@ -7,6 +7,7 @@
 //
 
 #import "TMAppDelegate.h"
+#import "RIOInterface.h"
 
 @interface TMAppDelegate ()
 
@@ -17,6 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    RIOInterface *rioRef = [RIOInterface sharedInstance];
+    [rioRef setSampleRate:44100];
+//    [rioRef setFrequency:294];
+    [rioRef initializeAudioSession];
+
     return YES;
 }
 

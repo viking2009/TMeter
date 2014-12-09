@@ -25,6 +25,7 @@
 		900AEEB51A2B904600848B57 /* point_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEEAF1A2B904600848B57 /* point_green@2x.png */; };
 		900AEEB71A2B904600848B57 /* point_red_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEEB11A2B904600848B57 /* point_red_active@2x.png */; };
 		900AEEB91A2B904600848B57 /* point_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 900AEEB31A2B904600848B57 /* point_red@2x.png */; };
+		905188541A37664900571BCF /* RIOInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 905188521A37664900571BCF /* RIOInterface.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		905510741A3643B00001BB69 /* settings_top_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 905510731A3643B00001BB69 /* settings_top_background@2x.png */; };
 		905510761A3645810001BB69 /* settings_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 905510751A3645810001BB69 /* settings_background@2x.png */; };
 		905510791A3645F60001BB69 /* segmented_control_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 905510771A3645F60001BB69 /* segmented_control_background@2x.png */; };
@@ -92,6 +93,8 @@
 		900AEEAF1A2B904600848B57 /* point_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point_green@2x.png"; sourceTree = "<group>"; };
 		900AEEB11A2B904600848B57 /* point_red_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point_red_active@2x.png"; sourceTree = "<group>"; };
 		900AEEB31A2B904600848B57 /* point_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "point_red@2x.png"; sourceTree = "<group>"; };
+		905188511A37664900571BCF /* RIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIOInterface.h; sourceTree = "<group>"; };
+		905188521A37664900571BCF /* RIOInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RIOInterface.mm; sourceTree = "<group>"; };
 		905510731A3643B00001BB69 /* settings_top_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_top_background@2x.png"; sourceTree = "<group>"; };
 		905510751A3645810001BB69 /* settings_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings_background@2x.png"; sourceTree = "<group>"; };
 		905510771A3645F60001BB69 /* segmented_control_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "segmented_control_background@2x.png"; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				900AEE8B1A2B6DC500848B57 /* SVSegmentedControl */,
+				9051884F1A37664900571BCF /* PitchDetector */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -329,6 +333,15 @@
 				900AEEB31A2B904600848B57 /* point_red@2x.png */,
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		9051884F1A37664900571BCF /* PitchDetector */ = {
+			isa = PBXGroup;
+			children = (
+				905188511A37664900571BCF /* RIOInterface.h */,
+				905188521A37664900571BCF /* RIOInterface.mm */,
+			);
+			path = PitchDetector;
 			sourceTree = "<group>";
 		};
 		905510721A3643A30001BB69 /* settings */ = {
@@ -498,6 +511,7 @@
 				900AEEAA1A2B8B0700848B57 /* TMCircleLayout.m in Sources */,
 				905510821A364B580001BB69 /* TMSegmentCell.m in Sources */,
 				905510851A364C100001BB69 /* TMSettingsCell.m in Sources */,
+				905188541A37664900571BCF /* RIOInterface.mm in Sources */,
 				900AEE701A2B638200848B57 /* TMMainViewController.m in Sources */,
 				900AEE901A2B6DC500848B57 /* SVSegmentedControl.m in Sources */,
 				9055107F1A36492B0001BB69 /* TMSettingsViewController.m in Sources */,

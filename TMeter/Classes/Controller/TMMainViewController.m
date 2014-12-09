@@ -11,8 +11,12 @@
 #import "TMUtils.h"
 #import "TMCircleLayout.h"
 #import "TMCircleCell.h"
+#import "RIOInterface.h"
 
-@interface TMMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+#define kOLSParameterA -1.99550610142
+#define kOLSParameterB 16351.0179948
+
+@interface TMMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, RIOInterfaceDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *iconViews;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -22,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleView;
 @property (weak, nonatomic) IBOutlet UILabel *hintLabel;
+@property (strong, nonatomic) RIOInterface *rio;
 
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -42,25 +47,19 @@
 
 @implementation TMMainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDate) name:UIApplicationDidBecomeActiveNotification object:nil];
-    }
-    
-    return self;
-}
-
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
     [self.timer invalidate];
     self.timer = nil;
+    
+    [self.rio stopListening];
+    self.rio.delegate = nil;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.rio = [RIOInterface sharedInstance];
     
 //    [self updateTemperature];
     self.collectionViewLayout.radius = 90.f;
@@ -88,7 +87,7 @@
 
 - (void)updateTemperature {
     // TODO: calculate temperature
-    self.currentTemperature = 36.65f;
+//    self.currentTemperature = 36.65f;
     
     [self updateTemperatureLabel];
     [self.collectionView reloadData];
@@ -158,15 +157,20 @@
     [self stopTimer];
     [self hideResults];
     
+    self.currentTemperature = 0;
     self.temperatureLabel.hidden = NO;
 
     self.startButton.enabled = NO;
     self.settingsButton.enabled = NO;
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateTemperature) userInfo:nil repeats:YES];
+    
+    [self.rio startListening:self];
 }
 
 - (void)stopTimer {
+    [self.rio stopListening];
+    
     [self.timer invalidate];
     self.timer = nil;
     
@@ -207,6 +211,13 @@
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
+}
+
+#pragma mark RIOInterfaceDelegate
+
+- (void)frequencyChangedWithValue:(float)newFrequency {
+    self.currentTemperature = MAX(self.currentTemperature, kOLSParameterA * newFrequency + kOLSParameterB);
+//    DLog(@"%f: %f", newFrequency, self.currentTemperature);
 }
 
 @end
