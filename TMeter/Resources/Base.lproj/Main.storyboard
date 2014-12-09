@@ -201,6 +201,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hjV-9z-JOU" firstAttribute="bottom" secondItem="UMB-aW-Rnm" secondAttribute="bottom" constant="2" id="1fu-u1-yyA"/>
                             <constraint firstItem="B6u-of-Ba4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="2" id="KST-vu-HSn"/>
@@ -223,6 +224,9 @@
                             <constraint firstItem="B6u-of-Ba4" firstAttribute="leading" secondItem="suL-jG-Wux" secondAttribute="leading" constant="-14" id="xsv-EW-orI"/>
                             <constraint firstAttribute="width" secondItem="BfJ-r5-XBe" secondAttribute="width" id="yUn-1L-2iR"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="UXt-ch-0JZ" appends="YES" id="P3v-cN-aBq"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="bubbleView" destination="B6u-of-Ba4" id="CM7-vf-EMF"/>
@@ -239,6 +243,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="UXt-ch-0JZ">
+                    <connections>
+                        <segue destination="g2e-2d-VNb" kind="modal" id="1Jf-zi-jBx"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131" y="281"/>
         </scene>
@@ -345,6 +354,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="zhP-AI-WLf" secondAttribute="width" id="3OU-wq-7uA"/>
                             <constraint firstItem="SqO-em-dMq" firstAttribute="top" secondItem="gx0-ba-C1Z" secondAttribute="bottom" constant="-20" id="3hy-oh-Lnz"/>
@@ -361,6 +371,9 @@
                             <constraint firstAttribute="width" secondItem="xBG-mV-ShV" secondAttribute="width" id="w38-aD-r02"/>
                             <constraint firstItem="PWf-DP-Iw5" firstAttribute="top" secondItem="gx0-ba-C1Z" secondAttribute="bottom" constant="2" id="ztF-SO-X00"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gEl-L1-G0d" appends="YES" id="lQY-9h-g9S"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="QFi-rh-gUF"/>
                     <connections>
@@ -369,6 +382,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXC-nq-4Tg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="gEl-L1-G0d">
+                    <connections>
+                        <action selector="doneButtonAction:" destination="XPs-R9-urB" id="vBa-6c-9eh"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="524" y="916"/>
         </scene>
@@ -392,4 +410,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="BNs-fa-WgE"/>
+    </inferredMetricsTieBreakers>
 </document>

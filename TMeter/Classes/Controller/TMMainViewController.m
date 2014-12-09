@@ -69,8 +69,6 @@
     self.collectionViewLayout.cellsPerCircle = 30;
     self.collectionViewLayout.itemSize = CGSizeMake(TMCircleCellImageSize, TMCircleCellImageSize);
     self.collectionViewLayout.distance = 18.f;
-    
-    [self updateTemperature];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -140,7 +138,7 @@
     }
     
     
-    NSString *hintString = (tempString ? [NSString stringWithFormat:@"You have %@ temperature!", tempString] : TMLocalizedString(@"Impossible to measure the temperature"));
+    NSString *hintString = (tempString ? [NSString stringWithFormat:@"You have %@ temperature!", tempString] : TMLocalizedString(@"Impossible to measure the temperature!"));
     UIFont *hintFont = [UIFont fontWithName:@"HelveticaNeue" size:15];
     
     NSDictionary *attributes = @{NSForegroundColorAttributeName: RGB(0, 0, 0), NSFontAttributeName: hintFont};
