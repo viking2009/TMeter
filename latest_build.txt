@@ -1,5 +1,5 @@
-h2. 20141209
+h2. 20141210
 
-h3. Note:
+h3. Fixes:
 
-* Initial build
+Task #126: Don't block settings button
