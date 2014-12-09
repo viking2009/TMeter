@@ -10,3 +10,5 @@ Task #126: Don't block settings button
 Feature #127: Use swipe gesture to display/hide settings
 * use swipe up for main page to show Settings
 * use swipe down for Settings to hide Settings
+Bug #128: Wrong position for hint label
+* fixed bubble image name
