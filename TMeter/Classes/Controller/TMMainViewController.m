@@ -69,6 +69,8 @@
     self.collectionViewLayout.cellsPerCircle = 30;
     self.collectionViewLayout.itemSize = CGSizeMake(TMCircleCellImageSize, TMCircleCellImageSize);
     self.collectionViewLayout.distance = 18.f;
+    
+    [self updateTemperature];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -121,35 +123,38 @@
         iconView.alpha = 0.2;
     }
 
-    NSString *tempString = @"normal";
+    NSString *tempString = nil;
     // TODO: update label
-    if (self.currentTemperature < 36.5f) {
+    if (self.currentTemperature >= kTMeterMinTemperature && self.currentTemperature < 36.5f) {
         [_iconViews[0] setAlpha:1.0];
         tempString = @"low";
     } else if (self.currentTemperature < 36.99f) {
         [_iconViews[1] setAlpha:1.0];
+        tempString = @"normal";
     } else if (self.currentTemperature < 38.99f) {
         [_iconViews[2] setAlpha:1.0];
         tempString = @"high";
-    } else {
+    } else if (self.currentTemperature <= kTMeterMaxTemperature) {
         [_iconViews[3] setAlpha:1.0];
         tempString = @"very high";
     }
     
-    NSString *hintString = [NSString stringWithFormat:@"You have %@ temperature!", tempString];
+    
+    NSString *hintString = (tempString ? [NSString stringWithFormat:@"You have %@ temperature!", tempString] : TMLocalizedString(@"Impossible to measure the temperature"));
     UIFont *hintFont = [UIFont fontWithName:@"HelveticaNeue" size:15];
     
     NSDictionary *attributes = @{NSForegroundColorAttributeName: RGB(0, 0, 0), NSFontAttributeName: hintFont};
     NSMutableAttributedString *hintAttributedText = [[NSMutableAttributedString alloc] initWithString:hintString attributes:attributes];
     
-    NSRange range = [hintString rangeOfString:tempString];
-    attributes = @{NSForegroundColorAttributeName: RGB(235, 45, 1), NSFontAttributeName: hintFont};
-    [hintAttributedText setAttributes:attributes range:range];
+    if (tempString) {
+        NSRange range = [hintString rangeOfString:tempString];
+        attributes = @{NSForegroundColorAttributeName: RGB(235, 45, 1), NSFontAttributeName: hintFont};
+        [hintAttributedText setAttributes:attributes range:range];
+    }
 
     self.hintLabel.attributedText = hintAttributedText;
     
     self.startButton.enabled = YES;
-    self.settingsButton.enabled = YES;
 }
 
 - (void)hideResults {
@@ -169,7 +174,6 @@
     self.temperatureLabel.hidden = NO;
 
     self.startButton.enabled = NO;
-    self.settingsButton.enabled = NO;
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateTemperature) userInfo:nil repeats:YES];
     

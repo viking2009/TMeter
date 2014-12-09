@@ -2,4 +2,9 @@ h2. 20141210
 
 h3. Fixes:
 
+Bug #125: Wrong message and icon
+* don’t hide temperature label
+* show message if impossible to measure the temperature
 Task #126: Don't block settings button
+* allow show Setting while measurement in progress
+

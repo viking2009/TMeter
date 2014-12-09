@@ -100,7 +100,7 @@
                                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="SvI-gl-bFq"/>
                                                 </connections>
                                             </collectionView>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gFg-CG-PiY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gFg-CG-PiY">
                                                 <rect key="frame" x="80" y="80" width="160" height="180"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="180" id="SCd-GU-stJ"/>
@@ -139,7 +139,7 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="main_bubble_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="B6u-of-Ba4">
                                 <rect key="frame" x="2" y="398" width="150" height="101"/>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suL-jG-Wux">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suL-jG-Wux">
                                 <rect key="frame" x="16" y="406" width="122" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="MDf-OV-hki"/>
