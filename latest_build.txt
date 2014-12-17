@@ -1,19 +1,6 @@
-h2. 20141210
-
-h3. Improvements:
-
-Task #122: Resources
-* optimize images
-Feature #127: Use swipe gesture to display/hide settings
-* use swipe up for main page to show Settings
-* use swipe down for Settings to hide Settings
+h2. 20141217
 
 h3. Fixes:
 
-Bug #125: Wrong message and icon
-* don’t hide temperature label
-* show message if impossible to measure the temperature
-Task #126: Don't block settings button
-* allow show Setting while measurement in progress
-Bug #128: Wrong position for hint label
-* fixed bubble image name
+Bug #129: No temperature
+* change temperature label text for acceptable temperature range

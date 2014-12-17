@@ -226,8 +226,12 @@
 #pragma mark RIOInterfaceDelegate
 
 - (void)frequencyChangedWithValue:(float)newFrequency {
-    self.currentTemperature = MAX(self.currentTemperature, kOLSParameterA * newFrequency + kOLSParameterB);
-//    DLog(@"%f: %f", newFrequency, self.currentTemperature);
+    float newTemperature = kOLSParameterA * newFrequency + kOLSParameterB;
+//    DLog(@"%f: %f", newFrequency, newTemperature);
+
+    if (newTemperature >= kTMeterMinTemperature && newTemperature <= kTMeterMaxTemperature) {
+        self.currentTemperature = MAX(self.currentTemperature, newTemperature);
+    }
 }
 
 @end
