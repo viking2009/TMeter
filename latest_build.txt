@@ -1,6 +1,6 @@
-h2. 20141217
+h2. 20141217#2
 
 h3. Fixes:
 
-Bug #129: No temperature
-* change temperature label text for acceptable temperature range
+Bug #125: Wrong message and icon
+* fix temperature ranges

@@ -19,6 +19,10 @@
 #define kTMeterMinTemperature 32.f
 #define kTMeterMaxTemperature 42.f
 
+#define kTMeterTemperatureLow 36.5f
+#define kTMeterTemperatureNormal 36.99f
+#define kTMeterTemperatureHigh 38.99f
+
 @interface TMMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, RIOInterfaceDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *iconViews;
@@ -123,16 +127,16 @@
 
     NSString *tempString = nil;
     // TODO: update label
-    if (self.currentTemperature >= kTMeterMinTemperature && self.currentTemperature < 36.5f) {
+    if (self.currentTemperature >= kTMeterMinTemperature && self.currentTemperature <= kTMeterTemperatureLow) {
         [_iconViews[0] setAlpha:1.0];
         tempString = @"low";
-    } else if (self.currentTemperature < 36.99f) {
+    } else if (self.currentTemperature > kTMeterTemperatureLow && self.currentTemperature <= kTMeterTemperatureNormal) {
         [_iconViews[1] setAlpha:1.0];
         tempString = @"normal";
-    } else if (self.currentTemperature < 38.99f) {
+    } else if (self.currentTemperature > kTMeterTemperatureNormal && self.currentTemperature <= kTMeterTemperatureHigh) {
         [_iconViews[2] setAlpha:1.0];
         tempString = @"high";
-    } else if (self.currentTemperature <= kTMeterMaxTemperature) {
+    } else if (self.currentTemperature > kTMeterTemperatureHigh && self.currentTemperature <= kTMeterMaxTemperature) {
         [_iconViews[3] setAlpha:1.0];
         tempString = @"very high";
     }
