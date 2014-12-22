@@ -254,7 +254,10 @@
 
 - (void)frequencyChangedWithValue:(float)newFrequency {
     float newTemperature = kOLSParameterA * newFrequency + kOLSParameterB;
-//    DLog(@"%f: %f", newFrequency, newTemperature);
+
+#if TMUseTestTone
+    DLog(@"%f: %f", newFrequency, newTemperature);
+#endif
 
     if (newTemperature >= kTMeterMinTemperature && newTemperature <= kTMeterMaxTemperature) {
         self.currentTemperature = MAX(self.currentTemperature, newTemperature);

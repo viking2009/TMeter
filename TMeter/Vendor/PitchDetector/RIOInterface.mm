@@ -102,7 +102,7 @@ OSStatus RenderFFTCallback (void					*inRefCon,
 	uint32_t nOver2 = THIS->nOver2;
 	uint32_t stride = 1;
 	int bufferCapacity = THIS->bufferCapacity;
-	SInt16 index = THIS->index;
+	SInt32 index = THIS->index;
 	
 	AudioUnit rioUnit = THIS->ioUnit;
 	OSStatus renderErr;
@@ -118,12 +118,12 @@ OSStatus RenderFFTCallback (void					*inRefCon,
 	// fft.
 	int read = bufferCapacity - index;
 	if (read > inNumberFrames) {
-		memcpy((SInt16 *)dataBuffer + index, THIS->bufferList->mBuffers[0].mData, inNumberFrames*sizeof(SInt16));
+		memcpy((SInt32 *)dataBuffer + index, THIS->bufferList->mBuffers[0].mData, inNumberFrames*sizeof(SInt32));
 		THIS->index += inNumberFrames;
 	} else {
 		// If we enter this conditional, our buffer will be filled and we should 
 		// perform the FFT.
-		memcpy((SInt16 *)dataBuffer + index, THIS->bufferList->mBuffers[0].mData, read*sizeof(SInt16));
+		memcpy((SInt32 *)dataBuffer + index, THIS->bufferList->mBuffers[0].mData, read*sizeof(SInt32));
 		
 		// Reset the index.
 		THIS->index = 0;
@@ -157,7 +157,7 @@ OSStatus RenderFFTCallback (void					*inRefCon,
 				bin = (i+1)/2;
 			}
 		}
-		memset(outputBuffer, 0, n*sizeof(SInt16));
+		memset(outputBuffer, 0, n*sizeof(SInt32));
 		
 		// Update the UI with our newly acquired frequency value.
         if ([THIS->delegate respondsToSelector:@selector(frequencyChangedWithValue:)]) {
@@ -191,7 +191,7 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 	
 	const AudioStreamBasicDescription inFormat = THIS->streamFormat;
 	
-	UInt32 inSize = capacity*sizeof(SInt16);
+	UInt32 inSize = capacity*sizeof(SInt32);
 	UInt32 outSize = capacity*sizeof(float);
 	err = AudioConverterNew(&inFormat, &outFormat, &converter);
 	err = AudioConverterConvertBuffer(converter, inSize, buf, &outSize, outputBuf);
@@ -199,8 +199,8 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 
 /* Setup our FFT */
 - (void)realFFTSetup {
-	UInt32 maxFrames = 2048*8;
-	dataBuffer = (void*)malloc(maxFrames * sizeof(SInt16));
+	UInt32 maxFrames = 2048*32;
+	dataBuffer = (void*)malloc(maxFrames * sizeof(SInt32));
 	outputBuffer = (float*)malloc(maxFrames *sizeof(float));
 	log2n = log2f(maxFrames);
 	n = 1 << log2n;
@@ -327,7 +327,7 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 - (size_t)ASBDForSoundMode {
 	AudioStreamBasicDescription asbd = {0};
 	size_t bytesPerSample;
-	bytesPerSample = sizeof(SInt16);
+	bytesPerSample = sizeof(SInt32);
 	asbd.mFormatID = kAudioFormatLinearPCM;
 	asbd.mFormatFlags = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
 	asbd.mBitsPerChannel = 8 * bytesPerSample;
