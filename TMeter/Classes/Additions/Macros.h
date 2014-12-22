@@ -22,3 +22,4 @@
 #   define DLog(...)
 #endif
 
+#define TMUseTestTone 1

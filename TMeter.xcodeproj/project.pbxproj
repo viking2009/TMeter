@@ -50,6 +50,7 @@
 		905510A71A3656840001BB69 /* main_girl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 905510A61A3656830001BB69 /* main_girl@2x.png */; };
 		905510AA1A3656940001BB69 /* main_settingsButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 905510A81A3656940001BB69 /* main_settingsButton@2x.png */; };
 		905510AB1A3656940001BB69 /* main_startButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 905510A91A3656940001BB69 /* main_startButton@2x.png */; };
+		90E6FED81A48BDBB000D3416 /* DGToneGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E6FED71A48BDBB000D3416 /* DGToneGenerator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		905510A61A3656830001BB69 /* main_girl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_girl@2x.png"; sourceTree = "<group>"; };
 		905510A81A3656940001BB69 /* main_settingsButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_settingsButton@2x.png"; sourceTree = "<group>"; };
 		905510A91A3656940001BB69 /* main_startButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_startButton@2x.png"; sourceTree = "<group>"; };
+		90E6FED61A48BDBB000D3416 /* DGToneGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGToneGenerator.h; sourceTree = "<group>"; };
+		90E6FED71A48BDBB000D3416 /* DGToneGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGToneGenerator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +236,8 @@
 		900AEE6A1A2B638200848B57 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				90E6FED61A48BDBB000D3416 /* DGToneGenerator.h */,
+				90E6FED71A48BDBB000D3416 /* DGToneGenerator.m */,
 				900AEE6B1A2B638200848B57 /* TMMainViewController.h */,
 				900AEE6C1A2B638200848B57 /* TMMainViewController.m */,
 				9055107D1A36492B0001BB69 /* TMSettingsViewController.h */,
@@ -514,6 +519,7 @@
 				905188541A37664900571BCF /* RIOInterface.mm in Sources */,
 				900AEE701A2B638200848B57 /* TMMainViewController.m in Sources */,
 				900AEE901A2B6DC500848B57 /* SVSegmentedControl.m in Sources */,
+				90E6FED81A48BDBB000D3416 /* DGToneGenerator.m in Sources */,
 				9055107F1A36492B0001BB69 /* TMSettingsViewController.m in Sources */,
 				900AEEAD1A2B8E6F00848B57 /* TMCircleCell.m in Sources */,
 				900AEE421A2B5E7C00848B57 /* main.m in Sources */,

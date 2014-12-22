@@ -13,6 +13,10 @@
 #import "TMCircleCell.h"
 #import "RIOInterface.h"
 
+#if TMUseTestTone
+    #import "DGToneGenerator.h"
+#endif
+
 #define kOLSParameterA -1.99550610142
 #define kOLSParameterB 16351.0179948
 
@@ -34,6 +38,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bubbleView;
 @property (weak, nonatomic) IBOutlet UILabel *hintLabel;
 @property (strong, nonatomic) RIOInterface *rio;
+
+#if TMUseTestTone
+@property (strong, nonatomic) DGToneGenerator *toneGenerator;
+#endif
 
 @property (strong, nonatomic) NSTimer *timer;
 
@@ -60,11 +68,20 @@
     
     [self.rio stopListening];
     self.rio.delegate = nil;
+    
+#if TMUseTestTone
+    [self.toneGenerator stop];
+#endif
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+#if TMUseTestTone
+    self.toneGenerator = [[DGToneGenerator alloc] init];
+    self.toneGenerator.frequency = 16281.17;
+#endif
     
     self.rio = [RIOInterface sharedInstance];
     
@@ -180,9 +197,15 @@
     self.timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateTemperature) userInfo:nil repeats:YES];
     
     [self.rio startListening:self];
+#if TMUseTestTone
+    [self.toneGenerator play];
+#endif
 }
 
 - (void)stopTimer {
+#if TMUseTestTone
+    [self.toneGenerator stop];
+#endif
     [self.rio stopListening];
     
     [self.timer invalidate];

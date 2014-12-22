@@ -199,7 +199,7 @@ void ConvertInt16ToFloat(RIOInterface* THIS, void *buf, float *outputBuf, size_t
 
 /* Setup our FFT */
 - (void)realFFTSetup {
-	UInt32 maxFrames = 2048;
+	UInt32 maxFrames = 2048*8;
 	dataBuffer = (void*)malloc(maxFrames * sizeof(SInt16));
 	outputBuffer = (float*)malloc(maxFrames *sizeof(float));
 	log2n = log2f(maxFrames);

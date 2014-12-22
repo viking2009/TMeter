@@ -21,7 +21,6 @@
     
     RIOInterface *rioRef = [RIOInterface sharedInstance];
     [rioRef setSampleRate:44100];
-//    [rioRef setFrequency:294];
     [rioRef initializeAudioSession];
 
     return YES;
